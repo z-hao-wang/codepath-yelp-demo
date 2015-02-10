@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dGn-Un-F2i">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
@@ -13,13 +14,148 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQf-Bk-NKf">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Gr-9X-Hmp">
+                                        <rect key="frame" x="8" y="8" width="46" height="30"/>
+                                        <state key="normal" title="Filter">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="nqX-nf-636" kind="push" id="yda-9V-ru4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkf-02-tKG">
+                                        <rect key="frame" x="266" y="8" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="vQ3-2O-tke"/>
+                                        </constraints>
+                                        <state key="normal" title="List">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PQc-Tq-gMN">
+                                        <rect key="frame" x="60" y="0.0" width="200" height="44"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83496665954589844" green="0.16468358039855957" blue="0.017166443169116974" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="PQc-Tq-gMN" firstAttribute="leading" secondItem="3Gr-9X-Hmp" secondAttribute="trailing" constant="6" id="GwB-UP-isE"/>
+                                    <constraint firstItem="PQc-Tq-gMN" firstAttribute="top" secondItem="LQf-Bk-NKf" secondAttribute="top" id="KXk-P2-3vy"/>
+                                    <constraint firstItem="3Gr-9X-Hmp" firstAttribute="leading" secondItem="LQf-Bk-NKf" secondAttribute="leading" constant="8" id="Ndd-P6-WF5"/>
+                                    <constraint firstAttribute="trailing" secondItem="jkf-02-tKG" secondAttribute="trailing" constant="8" id="l0K-pj-00v"/>
+                                    <constraint firstItem="jkf-02-tKG" firstAttribute="leading" secondItem="PQc-Tq-gMN" secondAttribute="trailing" constant="6" id="s64-rd-UK0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LQf-Bk-NKf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Lrm-0N-cPR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LQf-Bk-NKf" secondAttribute="trailing" constant="-16" id="cn8-gS-O4U"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Search" id="Z1E-3m-vOF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="506" y="110"/>
+        </scene>
+        <!--Filters-->
+        <scene sceneID="YIh-hX-8gT">
+            <objects>
+                <viewController id="nqX-nf-636" customClass="FiltersViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qef-Xt-OZg"/>
+                        <viewControllerLayoutGuide type="bottom" id="VYZ-87-2SR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mP9-P3-fyd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozh-U9-aPT">
+                                <rect key="frame" x="16" y="89" width="40" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="DCm-gt-TsS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zE9-gk-zdT">
+                                <rect key="frame" x="88" y="85" width="46" height="30"/>
+                                <state key="normal" title="$">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJr-xF-3Tu">
+                                <rect key="frame" x="142" y="85" width="46" height="30"/>
+                                <state key="normal" title="$$">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJI-OC-SAx">
+                                <rect key="frame" x="196" y="85" width="46" height="30"/>
+                                <state key="normal" title="$$$">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI0-qr-3xk">
+                                <rect key="frame" x="250" y="84" width="46" height="30"/>
+                                <state key="normal" title="$$$$">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zE9-gk-zdT" firstAttribute="width" secondItem="xJr-xF-3Tu" secondAttribute="width" id="08L-qA-ey2"/>
+                            <constraint firstItem="Ozh-U9-aPT" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="2Cp-a1-SyC"/>
+                            <constraint firstItem="xJr-xF-3Tu" firstAttribute="leading" secondItem="zE9-gk-zdT" secondAttribute="trailing" constant="8" id="KMb-rk-yol"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dI0-qr-3xk" secondAttribute="trailing" constant="8" id="PGa-0c-0iw"/>
+                            <constraint firstItem="lJI-OC-SAx" firstAttribute="leading" secondItem="xJr-xF-3Tu" secondAttribute="trailing" constant="8" id="QK1-tw-Lr7"/>
+                            <constraint firstItem="dI0-qr-3xk" firstAttribute="leading" secondItem="lJI-OC-SAx" secondAttribute="trailing" constant="8" id="eD6-uX-u3k"/>
+                            <constraint firstItem="zE9-gk-zdT" firstAttribute="leading" secondItem="Ozh-U9-aPT" secondAttribute="trailing" constant="32" id="mtD-uD-jxK"/>
+                            <constraint firstItem="zE9-gk-zdT" firstAttribute="width" secondItem="dI0-qr-3xk" secondAttribute="width" id="umh-IO-Xdv"/>
+                            <constraint firstItem="zE9-gk-zdT" firstAttribute="width" secondItem="lJI-OC-SAx" secondAttribute="width" id="yEc-u9-jyp"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Filters" id="1uR-aP-pnC"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bJC-Sa-EBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893" y="104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DK0-4M-qpA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dGn-Un-F2i" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DAf-91-Br1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="mYn-Sf-ThN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o9Z-Ni-op4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="118.33333333333331"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
