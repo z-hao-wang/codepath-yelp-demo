@@ -118,6 +118,7 @@
                     <navigationItem key="navigationItem" title="Search" id="Z1E-3m-vOF"/>
                     <connections>
                         <outlet property="searchBar" destination="PQc-Tq-gMN" id="ATC-dv-iw4"/>
+                        <outlet property="topBarView" destination="LQf-Bk-NKf" id="BYT-Bu-A6C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

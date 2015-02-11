@@ -9,6 +9,7 @@
 import UIKit
 
 class MainViewController: UITableViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var topBarView: UIView!
     var client: YelpClient!
     
     // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
@@ -48,6 +49,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
         println("view Did load")
         searchTerm("Restaurant", location: "San Francisco")
         tableView.rowHeight = 92
+
     }
     
     override func didReceiveMemoryWarning() {
