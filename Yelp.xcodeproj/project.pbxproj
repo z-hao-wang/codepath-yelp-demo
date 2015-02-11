@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		03D1A025B413415787AD3DF3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C56EF0CE844A4EE5819C72AF /* libPods.a */; };
 		222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D8A5A19CCF9F900D2DB53 /* AppDelegate.swift */; };
-		222D8A5D19CCF9F900D2DB53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D8A5C19CCF9F900D2DB53 /* ViewController.swift */; };
 		222D8A6019CCF9F900D2DB53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222D8A5E19CCF9F900D2DB53 /* Main.storyboard */; };
 		222D8A6219CCF9F900D2DB53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222D8A6119CCF9F900D2DB53 /* Images.xcassets */; };
 		222D8A6519CCF9F900D2DB53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D8A6319CCF9F900D2DB53 /* LaunchScreen.xib */; };
 		222D8A7119CCF9F900D2DB53 /* YelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D8A7019CCF9F900D2DB53 /* YelpTests.swift */; };
 		222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D8A7C19CCFAE000D2DB53 /* YelpClient.swift */; };
 		AFDC35611A8AB01200A7F74E /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC35601A8AB01200A7F74E /* FiltersViewController.swift */; };
+		AFDC35631A8AC37B00A7F74E /* FilterBoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC35621A8AC37B00A7F74E /* FilterBoolTableViewCell.swift */; };
+		AFDC35651A8B1E0E00A7F74E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC35641A8B1E0E00A7F74E /* ItemTableViewCell.swift */; };
+		AFDC35671A8B1F3400A7F74E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC35661A8B1F3400A7F74E /* MainViewController.swift */; };
+		AFDC35691A8B202C00A7F74E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFDC35681A8B202C00A7F74E /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +35,6 @@
 		222D8A5519CCF9F900D2DB53 /* Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222D8A5919CCF9F900D2DB53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		222D8A5A19CCF9F900D2DB53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		222D8A5C19CCF9F900D2DB53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		222D8A5F19CCF9F900D2DB53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		222D8A6119CCF9F900D2DB53 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		222D8A6419CCF9F900D2DB53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -44,6 +46,10 @@
 		3F49FB16EDA66D06425CA071 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5ED87D0FCE7BB0197A7E8CF7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		AFDC35601A8AB01200A7F74E /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		AFDC35621A8AC37B00A7F74E /* FilterBoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterBoolTableViewCell.swift; sourceTree = "<group>"; };
+		AFDC35641A8B1E0E00A7F74E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		AFDC35661A8B1F3400A7F74E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AFDC35681A8B202C00A7F74E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		C56EF0CE844A4EE5819C72AF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,6 +99,7 @@
 				222D8A7B19CCFAB600D2DB53 /* View Controllers */,
 				222D8A5A19CCF9F900D2DB53 /* AppDelegate.swift */,
 				222D8A5E19CCF9F900D2DB53 /* Main.storyboard */,
+				AFDC35681A8B202C00A7F74E /* Media.xcassets */,
 				222D8A6119CCF9F900D2DB53 /* Images.xcassets */,
 				222D8A6319CCF9F900D2DB53 /* LaunchScreen.xib */,
 				222D8A5819CCF9F900D2DB53 /* Supporting Files */,
@@ -137,8 +144,10 @@
 		222D8A7B19CCFAB600D2DB53 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AFDC35641A8B1E0E00A7F74E /* ItemTableViewCell.swift */,
 				AFDC35601A8AB01200A7F74E /* FiltersViewController.swift */,
-				222D8A5C19CCF9F900D2DB53 /* ViewController.swift */,
+				AFDC35621A8AC37B00A7F74E /* FilterBoolTableViewCell.swift */,
+				AFDC35661A8B1F3400A7F74E /* MainViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -244,6 +253,7 @@
 			files = (
 				222D8A6019CCF9F900D2DB53 /* Main.storyboard in Resources */,
 				222D8A6519CCF9F900D2DB53 /* LaunchScreen.xib in Resources */,
+				AFDC35691A8B202C00A7F74E /* Media.xcassets in Resources */,
 				222D8A6219CCF9F900D2DB53 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +305,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				222D8A5D19CCF9F900D2DB53 /* ViewController.swift in Sources */,
+				AFDC35671A8B1F3400A7F74E /* MainViewController.swift in Sources */,
+				AFDC35651A8B1E0E00A7F74E /* ItemTableViewCell.swift in Sources */,
+				AFDC35631A8AC37B00A7F74E /* FilterBoolTableViewCell.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
 				AFDC35611A8AB01200A7F74E /* FiltersViewController.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
