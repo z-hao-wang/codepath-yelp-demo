@@ -47,7 +47,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
         // Do any additional setup after loading the view, typically from a nib.
         println("view Did load")
         searchTerm("Restaurant", location: "San Francisco")
-        
+        tableView.rowHeight = 92
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,12 +60,43 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
         
     }
     
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("itemTableCell") as ItemTableViewCell
+    func setCellData(cell: ItemTableViewCell, indexPath: NSIndexPath) {
         if let name = businesses[indexPath.row]["name"] as? String {
             cell.businessTitle.text = name
         }
+        
+        if let location = businesses[indexPath.row]["location"] as? NSDictionary {
+            if let address = location["address"]?[0] as? NSString {
+                cell.address.text = address
+            }
+        }
+        
+        if let categories = businesses[indexPath.row]["categories"] as? NSArray {
+            var textParts = ""
+            if categories.count > 0 {
+                if let categories1 = categories[0] as? NSArray {
+                    textParts += categories1[0] as String
+                }
+            }
+            if categories.count > 1 {
+                if let categories2 = categories[1] as? NSArray {
+                    textParts += ", "
+                    textParts += categories2[0] as String
+                }
+            }
+            cell.category.text = textParts
+        }
+        
+        if let image_url = businesses[indexPath.row]["image_url"] as? String {
+            if let img = cell.photoView? {
+                Utils.setImageWithUrl(image_url, imageView: img, placeHolerImg: nil, success: {(imageData: UIImage) -> () in }, fail: {})
+            }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("itemTableCell") as ItemTableViewCell
+        setCellData(cell, indexPath: indexPath)
         return cell
     }
     
