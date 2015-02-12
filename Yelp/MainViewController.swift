@@ -47,9 +47,15 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         println("view Did load")
-        searchTerm("Restaurant", location: "San Francisco")
         tableView.rowHeight = 92
-
+        self.view.bringSubviewToFront(topBarView)
+        topBarView.frame.origin.y = 64
+        //UITapGestureRecognizer.initialize()
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapRecognizer.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapRecognizer)
+        topBarView.frame.size.height = 44.0
+        self.navigationItem.titleView = topBarView
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,9 +63,13 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissKeyboard () {
+        self.searchBar.endEditing(true)
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         println("Search \(searchBar.text)");
-        
+        searchTerm(searchBar.text, location: "San Francisco")
     }
     
     func setCellData(cell: ItemTableViewCell, indexPath: NSIndexPath) {
