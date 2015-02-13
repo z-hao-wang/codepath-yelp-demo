@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
-class MainViewController: UITableViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var topBarView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    var locationManager:CLLocationManager
+    
     var client: YelpClient!
     
     // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
@@ -25,24 +29,41 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
     @IBOutlet weak var searchBar: UISearchBar!
     
     required init(coder aDecoder: NSCoder) {
+        self.locationManager = CLLocationManager()
         super.init(coder: aDecoder)
+        
+        locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+        locationManager.startUpdatingLocation()
+
         //init yelp client
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
     }
     
     func searchTerm(term: String, location: String) {
-        client.searchWithTerm(term, location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTerm(term, category_filter: "", deals_filter: true, location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             if let responseWrapped = response as? NSDictionary {
                 self.businesses = responseWrapped["businesses"] as NSArray
                 self.region = responseWrapped["region"] as NSDictionary
                 self.total = responseWrapped["total"] as Int
             }
+            println(response)
             self.tableView.reloadData()
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //apply filter
+    }
+    func deviceLocation() {
+        var lat = locationManager.location?.coordinate.latitude
+        var lon = locationManager.location?.coordinate.longitude
+        println("\(lat),\(lon)");
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -55,7 +76,11 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
         tapRecognizer.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapRecognizer)
         topBarView.frame.size.height = 44.0
+        topBarView.frame.size.width = UIScreen.mainScreen().bounds.width
         self.navigationItem.titleView = topBarView
+        println("width: \(topBarView.frame.size.width)")
+        deviceLocation()
+        searchTerm("Restaurant", location: "San Francisco")
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,9 +103,15 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
         }
         
         if let location = businesses[indexPath.row]["location"] as? NSDictionary {
-            if let address = location["address"]?[0] as? NSString {
-                cell.address.text = address
+            cell.address.text = ""
+            if let addresses = location["address"] as? NSArray {
+                if addresses.count > 0 {
+                    if let address = addresses[0] as? NSString {
+                        cell.address.text = address
+                    }
+                }
             }
+            
         }
         
         if let categories = businesses[indexPath.row]["categories"] as? NSArray {
@@ -104,15 +135,25 @@ class MainViewController: UITableViewController, UISearchBarDelegate, UITableVie
                 Utils.setImageWithUrl(image_url, imageView: img, placeHolerImg: nil, success: {(imageData: UIImage) -> () in }, fail: {})
             }
         }
+        
+        if let ratingImageUrl = businesses[indexPath.row]["rating_img_url"] as? String{
+            if let img = cell.ratingImage? {
+                Utils.setImageWithUrl(ratingImageUrl, imageView: img, placeHolerImg: nil, success: {(imageData: UIImage) -> () in }, fail: {})
+            }
+        }
+        if let review_count = businesses[indexPath.row]["review_count"] as? Int{
+            cell.ratingCount.text = String(review_count) + " Reviews"
+        }
+        
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("itemTableCell") as ItemTableViewCell
         setCellData(cell, indexPath: indexPath)
         return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return businesses.count
     }
 }

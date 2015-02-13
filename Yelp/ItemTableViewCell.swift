@@ -15,7 +15,9 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var businessTitle: UILabel!
     @IBOutlet weak var photoView: UIImageView!
+    @IBOutlet weak var ratingImage: UIImageView!
     
+    @IBOutlet weak var ratingCount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

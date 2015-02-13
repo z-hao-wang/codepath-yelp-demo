@@ -15,14 +15,24 @@ var distance = 1.0
 var sortBy = 1
 
 class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, filterDelegate {
-    
+    @IBOutlet weak var prices: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
     let labelTexts = ["Open Now", "Hot & New", "Offering a Deal"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        prices.selectedSegmentIndex = price
+    }
 
+    @IBAction func didChangePrice(sender: UISegmentedControl) {
+        price = sender.selectedSegmentIndex
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

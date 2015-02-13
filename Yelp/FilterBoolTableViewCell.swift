@@ -21,6 +21,7 @@ class FilterBoolTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .None
         // Initialization code
     }
 
