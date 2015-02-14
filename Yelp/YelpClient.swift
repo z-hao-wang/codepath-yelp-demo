@@ -31,7 +31,6 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         var parameters = ["term": term, "location": location, "sort": sort, "radius_filter": radius_filter, "deals_filter": deals_filter]
         return self.GET("search", parameters: parameters, success: success, failure: failure)
     }
-    
 }
 
 

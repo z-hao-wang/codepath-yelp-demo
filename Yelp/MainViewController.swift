@@ -25,6 +25,8 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var businesses = NSArray()
     var region = NSDictionary()
     var total = 0
+    var currentSearchTerm = "Restaurant"
+    var dealFilterOn = false
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -41,7 +43,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func searchTerm(term: String, location: String) {
-        client.searchWithTerm(term, category_filter: "", deals_filter: true, location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTerm(term, category_filter: "", deals_filter: self.dealFilterOn, location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             if let responseWrapped = response as? NSDictionary {
                 self.businesses = responseWrapped["businesses"] as NSArray
                 self.region = responseWrapped["region"] as NSDictionary
@@ -54,10 +56,19 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         }
     }
     
+    func applyFilters() {
+        if let dealFromFilter = filterOptions["Offering a Deal"] {
+            self.dealFilterOn = dealFromFilter
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //apply filter
+        applyFilters()
+        searchTerm(currentSearchTerm, location: "San Francisco")
     }
+    
     func deviceLocation() {
         var lat = locationManager.location?.coordinate.latitude
         var lon = locationManager.location?.coordinate.longitude
@@ -80,7 +91,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         self.navigationItem.titleView = topBarView
         println("width: \(topBarView.frame.size.width)")
         deviceLocation()
-        searchTerm("Restaurant", location: "San Francisco")
+        searchTerm(currentSearchTerm, location: "San Francisco")
     }
     
     override func didReceiveMemoryWarning() {
