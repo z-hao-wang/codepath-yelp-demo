@@ -221,18 +221,65 @@
                                     <outlet property="delegate" destination="nqX-nf-636" id="Jdn-BA-dKj"/>
                                 </connections>
                             </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UHB-hF-qDf" customClass="ExpandUITableView" customModule="Yelp" customModuleProvider="target">
+                                <rect key="frame" x="16" y="190" width="288" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="1" green="0.19216797769999999" blue="0.25578050930000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sortCell" id="Uvk-Tx-xSE" customClass="SortTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uvk-Tx-xSE" id="Qo4-bo-lJZ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Best Match" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMK-6W-pdF">
+                                                    <rect key="frame" x="8" y="0.0" width="168" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="Ds3-LF-Xds"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aMK-6W-pdF" firstAttribute="top" secondItem="Qo4-bo-lJZ" secondAttribute="topMargin" id="WWO-Ue-bz4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="sortByLabel" destination="aMK-6W-pdF" id="Ge7-ai-VVi"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nqX-nf-636" id="lcO-mK-NYi"/>
+                                    <outlet property="delegate" destination="nqX-nf-636" id="qTm-50-jVG"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sort By" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8u-Gn-EPV">
+                                <rect key="frame" x="16" y="161" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UHB-hF-qDf" firstAttribute="top" secondItem="v8u-Gn-EPV" secondAttribute="bottom" constant="8" id="7KG-6B-GmL"/>
+                            <constraint firstItem="UHB-hF-qDf" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="Eaf-tg-oGE"/>
                             <constraint firstItem="bfW-T8-flC" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="O3p-lf-USm"/>
                             <constraint firstItem="bfW-T8-flC" firstAttribute="trailing" secondItem="mP9-P3-fyd" secondAttribute="trailingMargin" id="pRf-Sd-LRi"/>
+                            <constraint firstItem="UHB-hF-qDf" firstAttribute="trailing" secondItem="mP9-P3-fyd" secondAttribute="trailingMargin" id="xLU-s3-xcb"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Filters" id="1uR-aP-pnC"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="bfW-T8-flC" id="RfZ-tf-2iv"/>
+                        <outlet property="boolTableView" destination="bfW-T8-flC" id="llg-Hc-fnZ"/>
+                        <outlet property="sortTableView" destination="UHB-hF-qDf" id="nPA-ZY-3l7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJC-Sa-EBz" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -43,7 +43,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func searchTerm(term: String, location: String) {
-        client.searchWithTerm(term, category_filter: "", deals_filter: self.dealFilterOn, location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTerm(term, sort: sortBy, category_filter: "", deals_filter: self.dealFilterOn, location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             if let responseWrapped = response as? NSDictionary {
                 self.businesses = responseWrapped["businesses"] as NSArray
                 self.region = responseWrapped["region"] as NSDictionary
