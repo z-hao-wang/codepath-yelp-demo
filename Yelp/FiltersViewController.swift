@@ -28,6 +28,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let labelTexts = ["Offering a Deal"]
     
+    let categories = Categories()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Remove table view seperator
