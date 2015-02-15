@@ -11,9 +11,11 @@ import UIKit
 class RadiusTableViewCell: UITableViewCell {
 
     @IBOutlet weak var radiusLabel: UILabel!
+    @IBOutlet weak var caretImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

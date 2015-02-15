@@ -10,6 +10,7 @@ import UIKit
 
 class SortTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var caretImage: UIImageView!
     @IBOutlet weak var sortByLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -17,6 +17,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     //Bool table view
     @IBOutlet weak var boolTableView: UITableView!
     
+    @IBOutlet weak var radiusTableHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sortTableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var radiusTableView: ExpandUITableView!
     //Sort tableview Expandable
     @IBOutlet weak var sortTableView: ExpandUITableView!
@@ -72,6 +74,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 cell.sortByLabel.text = sortByLabels[sortBy]
             }
+            cell.caretImage.hidden = sortTableView.expanded
             return cell
         } else if tableView == radiusTableView {
             var cell = radiusTableView.dequeueReusableCellWithIdentifier("radiusCell") as RadiusTableViewCell
@@ -80,6 +83,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 cell.radiusLabel.text = radiusLabels[radiusFilter]
             }
+            cell.caretImage.hidden = radiusTableView.expanded
             return cell
         }
         // This does not matter
@@ -94,7 +98,17 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             sortTableView.expanded = !sortTableView.expanded
             sortTableView.reloadData()
-            sortTableView.frame.size.height = sortTableView.rowHeight * (sortTableView.expanded ? 3 : 1)
+            self.sortTableHeightConstraint.constant = self.sortTableView.contentSize.height
+            self.view.layoutIfNeeded()
+        } else if tableView == radiusTableView {
+            if radiusTableView.expanded {
+                //apply new sort method
+                radiusFilter = indexPath.row
+            }
+            radiusTableView.expanded = !radiusTableView.expanded
+            radiusTableView.reloadData()
+            self.radiusTableHeightConstraint.constant = self.radiusTableView.contentSize.height
+            self.view.layoutIfNeeded()
         }
     }
     

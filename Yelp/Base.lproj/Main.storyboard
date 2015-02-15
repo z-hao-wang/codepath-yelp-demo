@@ -229,15 +229,21 @@
                                     <outlet property="delegate" destination="nqX-nf-636" id="Jdn-BA-dKj"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sort By" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8u-Gn-EPV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sort By" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8u-Gn-EPV">
                                 <rect key="frame" x="16" y="161" width="120" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="AOw-14-BFU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UHB-hF-qDf" customClass="ExpandUITableView" customModule="Yelp" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UHB-hF-qDf" customClass="ExpandUITableView" customModule="Yelp" customModuleProvider="target">
                                 <rect key="frame" x="16" y="190" width="288" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="B9S-SR-Orb"/>
+                                </constraints>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sortCell" id="Uvk-Tx-xSE" customClass="SortTableViewCell" customModule="Yelp" customModuleProvider="target">
@@ -255,14 +261,24 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CaretDown" translatesAutoresizingMaskIntoConstraints="NO" id="APg-ZG-J90">
+                                                    <rect key="frame" x="257" y="11" width="25" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="Sjk-FE-j8i"/>
+                                                        <constraint firstAttribute="height" constant="22" id="eA7-sd-G61"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="APg-ZG-J90" secondAttribute="trailing" constant="-2" id="Ben-bu-drE"/>
+                                                <constraint firstItem="APg-ZG-J90" firstAttribute="top" secondItem="Qo4-bo-lJZ" secondAttribute="topMargin" constant="3" id="TwR-xj-J4Q"/>
                                                 <constraint firstItem="aMK-6W-pdF" firstAttribute="top" secondItem="Qo4-bo-lJZ" secondAttribute="topMargin" id="WWO-Ue-bz4"/>
                                                 <constraint firstItem="aMK-6W-pdF" firstAttribute="leading" secondItem="Qo4-bo-lJZ" secondAttribute="leadingMargin" id="a9G-Rc-jn5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <connections>
+                                            <outlet property="caretImage" destination="APg-ZG-J90" id="gb1-0h-Kj9"/>
                                             <outlet property="sortByLabel" destination="aMK-6W-pdF" id="Ge7-ai-VVi"/>
                                         </connections>
                                     </tableViewCell>
@@ -272,7 +288,7 @@
                                     <outlet property="delegate" destination="nqX-nf-636" id="qTm-50-jVG"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xg5-fF-zuU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xg5-fF-zuU">
                                 <rect key="frame" x="16" y="259" width="134" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="p7C-A9-F7Y"/>
@@ -281,9 +297,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aes-PB-trg" customClass="ExpandUITableView" customModule="Yelp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="280" width="288" height="91"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aes-PB-trg" customClass="ExpandUITableView" customModule="Yelp" customModuleProvider="target">
+                                <rect key="frame" x="16" y="280" width="288" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ybe-5C-FYT"/>
+                                </constraints>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="radiusCell" id="3C6-ci-FIj" customClass="RadiusTableViewCell" customModule="Yelp" customModuleProvider="target">
@@ -293,24 +312,47 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQT-oo-X1C">
-                                                    <rect key="frame" x="13" y="4" width="42" height="21"/>
+                                                    <rect key="frame" x="13" y="10" width="123" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="CaretDown" translatesAutoresizingMaskIntoConstraints="NO" id="Mqd-oB-s0D">
+                                                    <rect key="frame" x="255" y="13" width="25" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="8gd-PO-OOt"/>
+                                                        <constraint firstAttribute="width" constant="25" id="axY-mE-gJ3"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Mqd-oB-s0D" firstAttribute="top" secondItem="zgI-uy-WY3" secondAttribute="topMargin" constant="3" id="qZK-DN-2tJ"/>
+                                                <constraint firstItem="Mqd-oB-s0D" firstAttribute="trailing" secondItem="zgI-uy-WY3" secondAttribute="trailingMargin" id="rXP-l0-PkF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <connections>
+                                            <outlet property="caretImage" destination="Mqd-oB-s0D" id="5Fl-GB-KnX"/>
                                             <outlet property="radiusLabel" destination="LQT-oo-X1C" id="xVU-9s-Heq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nqX-nf-636" id="X5T-a2-Lr3"/>
+                                    <outlet property="delegate" destination="nqX-nf-636" id="Yh3-Q2-aV1"/>
+                                </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zk4-xK-xmx">
+                                <rect key="frame" x="16" y="379" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UHB-hF-qDf" firstAttribute="top" secondItem="v8u-Gn-EPV" secondAttribute="bottom" constant="8" id="7KG-6B-GmL"/>
+                            <constraint firstItem="v8u-Gn-EPV" firstAttribute="top" secondItem="bfW-T8-flC" secondAttribute="bottom" constant="17" id="8mn-kN-cHg"/>
                             <constraint firstItem="Xg5-fF-zuU" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="9Ej-4f-AtV"/>
                             <constraint firstItem="aes-PB-trg" firstAttribute="top" secondItem="Xg5-fF-zuU" secondAttribute="bottom" id="AIa-zU-7P4"/>
                             <constraint firstItem="Xg5-fF-zuU" firstAttribute="top" secondItem="UHB-hF-qDf" secondAttribute="bottom" constant="25" id="Apt-pw-5yt"/>
@@ -318,8 +360,10 @@
                             <constraint firstItem="v8u-Gn-EPV" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="Gv3-ol-ieA"/>
                             <constraint firstItem="Qg9-ak-583" firstAttribute="top" secondItem="Qef-Xt-OZg" secondAttribute="bottom" constant="7" id="MF5-kl-FDO"/>
                             <constraint firstItem="bfW-T8-flC" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="O3p-lf-USm"/>
+                            <constraint firstItem="Zk4-xK-xmx" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="O82-7a-UKH"/>
                             <constraint firstItem="Qg9-ak-583" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="bd0-Tk-PlY"/>
                             <constraint firstItem="bfW-T8-flC" firstAttribute="top" secondItem="Qg9-ak-583" secondAttribute="bottom" constant="8" id="e5q-31-Szq"/>
+                            <constraint firstItem="Zk4-xK-xmx" firstAttribute="top" secondItem="aes-PB-trg" secondAttribute="bottom" constant="8" id="o5Y-D3-3yu"/>
                             <constraint firstItem="bfW-T8-flC" firstAttribute="trailing" secondItem="mP9-P3-fyd" secondAttribute="trailingMargin" id="pRf-Sd-LRi"/>
                             <constraint firstItem="aes-PB-trg" firstAttribute="leading" secondItem="mP9-P3-fyd" secondAttribute="leadingMargin" id="trc-hB-JlU"/>
                             <constraint firstItem="aes-PB-trg" firstAttribute="trailing" secondItem="mP9-P3-fyd" secondAttribute="trailingMargin" id="w4M-69-ogT"/>
@@ -331,7 +375,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="boolTableView" destination="bfW-T8-flC" id="llg-Hc-fnZ"/>
+                        <outlet property="radiusTableHeightConstraint" destination="ybe-5C-FYT" id="doA-yb-Cyi"/>
                         <outlet property="radiusTableView" destination="aes-PB-trg" id="RBJ-aW-qxu"/>
+                        <outlet property="sortTableHeightConstraint" destination="B9S-SR-Orb" id="bxc-n2-FNl"/>
                         <outlet property="sortTableView" destination="UHB-hF-qDf" id="nPA-ZY-3l7"/>
                     </connections>
                 </viewController>
@@ -360,6 +406,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CaretDown" width="512" height="512"/>
         <image name="business_medium_square" width="100" height="100"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
