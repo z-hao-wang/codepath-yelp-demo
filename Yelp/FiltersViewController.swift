@@ -10,14 +10,19 @@ import UIKit
 
 //These are filters needs to be stored globally
 var filterOptions = Dictionary<String, Bool>()
-var sortBy = 0 //0 = Best Match, 1 = Distance, 2 = Highest Rated
+var sortBy = 0 // 0 = Best Match, 1 = Distance, 2 = Highest Rated
+var radiusFilter = 0 // 0 = auto, 1 = 0.3 miles, 2 = 1 mile, 3 = 5 miles, 4 = 20 miles
 
 class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, filterDelegate {
     //Bool table view
     @IBOutlet weak var boolTableView: UITableView!
     
+    @IBOutlet weak var radiusTableView: ExpandUITableView!
     //Sort tableview Expandable
     @IBOutlet weak var sortTableView: ExpandUITableView!
+    
+    let sortByLabels = ["Best Match", "Distance", "Highest Rated"]
+    let radiusLabels = ["Auto", "0.3 miles", "1 mile", "5 miles", "20 miles"]
     
     let labelTexts = ["Offering a Deal"]
     
@@ -40,9 +45,10 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             return labelTexts.count
         } else if tableView == sortTableView {
             return sortTableView.expanded ? 3 : 1
+        } else if tableView == radiusTableView {
+            return radiusTableView.expanded ? 5 : 1
         }
         return 0
-        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -60,11 +66,19 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         } else if tableView == sortTableView {
             var cell = sortTableView.dequeueReusableCellWithIdentifier("sortCell") as SortTableViewCell
-            let labels = ["Best Match", "Distance", "Highest Rated"]
+            
             if sortTableView.expanded {
-                cell.sortByLabel.text = labels[indexPath.row]
+                cell.sortByLabel.text = sortByLabels[indexPath.row]
             } else {
-                cell.sortByLabel.text = labels[sortBy]
+                cell.sortByLabel.text = sortByLabels[sortBy]
+            }
+            return cell
+        } else if tableView == radiusTableView {
+            var cell = radiusTableView.dequeueReusableCellWithIdentifier("radiusCell") as RadiusTableViewCell
+            if radiusTableView.expanded {
+                cell.radiusLabel.text = radiusLabels[indexPath.row]
+            } else {
+                cell.radiusLabel.text = radiusLabels[radiusFilter]
             }
             return cell
         }

@@ -38,12 +38,29 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
         locationManager.startUpdatingLocation()
 
-        //init yelp client
+        // init yelp client
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
     }
     
+    func radiusFilterToMeters(radiusNumber: Int) -> Int{
+        switch radiusNumber {
+        case 0:
+            return 0
+        case 1:
+            return 483 // 0.3 miles
+        case 2:
+            return 1609 // 1 mile
+        case 3:
+            return 8047 //5 miles
+        case 4:
+            return 32187 // 20 miles
+        default:
+            return 0
+        }
+    }
+    
     func searchTerm(term: String, location: String) {
-        client.searchWithTerm(term, sort: sortBy, category_filter: "", deals_filter: self.dealFilterOn, location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTerm(term, sort: sortBy, category_filter: "", deals_filter: self.dealFilterOn, radius_filter: radiusFilterToMeters(radiusFilter), location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             if let responseWrapped = response as? NSDictionary {
                 self.businesses = responseWrapped["businesses"] as NSArray
                 self.region = responseWrapped["region"] as NSDictionary
