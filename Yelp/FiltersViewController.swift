@@ -12,8 +12,9 @@ import UIKit
 var filterOptions = Dictionary<String, Bool>()
 var sortBy = 0 // 0 = Best Match, 1 = Distance, 2 = Highest Rated
 var radiusFilter = 0 // 0 = auto, 1 = 0.3 miles, 2 = 1 mile, 3 = 5 miles, 4 = 20 miles
+var categoryName = "All"
 
-class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, filterDelegate {
+class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate, filterDelegate {
     //Bool table view
     @IBOutlet weak var boolTableView: UITableView!
     
@@ -22,6 +23,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var radiusTableView: ExpandUITableView!
     //Sort tableview Expandable
     @IBOutlet weak var sortTableView: ExpandUITableView!
+    @IBOutlet weak var categoriesPicker: UIPickerView!
+    @IBOutlet weak var categoryButton: UIButton!
     
     let sortByLabels = ["Best Match", "Distance", "Highest Rated"]
     let radiusLabels = ["Auto", "0.3 miles", "1 mile", "5 miles", "20 miles"]
@@ -29,15 +32,57 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     let labelTexts = ["Offering a Deal"]
     
     let categories = Categories()
+    var categoriesData: [Dictionary<String, String>] = []
+    var categoriesPickerHidden = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Remove table view seperator
         boolTableView.separatorStyle = .None
+        self.categoriesPicker.dataSource = self;
+        self.categoriesPicker.delegate = self;
+        categoriesData = categories.getData()
+    }
+    @IBAction func categoryButtonDidClick(sender: AnyObject) {
+        categoriesPickerHidden = !categoriesPickerHidden
+        categoriesPicker.hidden = categoriesPickerHidden
+    }
+    // Data source
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoriesData.count + 1
+    }
+    
+    func getCategoryNameFromRow(row: Int) -> String {
+        if row == 0 {
+            return "All"
+        } else {
+            return categoriesData[row + 1]["name"]!
+        }
+    }
+    
+    func setCategoryButtonTitle() {
+        categoryButton.setTitle(categoryName, forState: UIControlState.Normal)
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return getCategoryNameFromRow(row)
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        categoriesPickerHidden = true
+        categoriesPicker.hidden = categoriesPickerHidden
+        categoryName = getCategoryNameFromRow(row)
+        setCategoryButtonTitle()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        categoriesPicker.hidden = true
+        setCategoryButtonTitle()
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,15 +167,4 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         println("value \(value) \(labelText)")
         setFilterValue(labelText, value: value)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

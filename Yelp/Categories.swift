@@ -181,7 +181,16 @@ struct Categories {
         categories += [["name" : "Yugoslav", "code": "yugoslav"]]
 
     }
-    func getData() {
+    func getData() -> [Dictionary<String, String>] {
         return categories
+    }
+    func getCodeAsArray() -> [String] {
+        var ret = [String]()
+        for item in categories {
+            if let code = item["code"]{
+                ret += [code]
+            }
+        }
+        return ret
     }
 }

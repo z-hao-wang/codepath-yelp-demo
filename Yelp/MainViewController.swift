@@ -60,7 +60,8 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func searchTerm(term: String, location: String) {
-        client.searchWithTerm(term, sort: sortBy, category_filter: "", deals_filter: self.dealFilterOn, radius_filter: radiusFilterToMeters(radiusFilter), location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        var category = categoryName == "All" ? "" : categoryName
+        client.searchWithTerm(term, sort: sortBy, category_filter: category, deals_filter: self.dealFilterOn, radius_filter: radiusFilterToMeters(radiusFilter), location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             if let responseWrapped = response as? NSDictionary {
                 self.businesses = responseWrapped["businesses"] as NSArray
                 self.region = responseWrapped["region"] as NSDictionary
@@ -91,24 +92,44 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         var lon = locationManager.location?.coordinate.longitude
         println("\(lat),\(lon)");
     }
+    
+    func updateTopBarSize() {
+        if let navFrame = self.navigationController?.navigationBar.frame {
+            topBarView.frame.size.height = navFrame.size.height
+            let screenWidth = UIScreen.mainScreen().bounds.size.width
+            topBarView.frame.size.width = screenWidth
+            println("\(screenWidth)")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        println("view Did load")
-        tableView.rowHeight = 92
+
         self.view.bringSubviewToFront(topBarView)
         topBarView.frame.origin.y = 64
         //UITapGestureRecognizer.initialize()
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         tapRecognizer.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapRecognizer)
-        topBarView.frame.size.height = 44.0
-        topBarView.frame.size.width = UIScreen.mainScreen().bounds.width
+        
         self.navigationItem.titleView = topBarView
-        println("width: \(topBarView.frame.size.width)")
-        deviceLocation()
+        updateTopBarSize()
+        searchBar.layer.borderWidth = 1
+        var barColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [213.0/255.0, 42.0/255.0, 4.0/255.0, 1.0])
+        searchBar.layer.backgroundColor = barColor
+        searchBar.layer.borderColor = barColor
+        //deviceLocation()
         searchTerm(currentSearchTerm, location: "San Francisco")
+        //To disable inset gap, but not working
+        tableView.contentInset = UIEdgeInsetsZero
+        //Auto table row height
+        tableView.estimatedRowHeight = 92.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateTopBarSize()
     }
     
     override func didReceiveMemoryWarning() {
@@ -176,7 +197,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("itemTableCell") as ItemTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("itemTableCell") as ItemTableViewCell
         setCellData(cell, indexPath: indexPath)
         return cell
     }
