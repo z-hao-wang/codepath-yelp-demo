@@ -125,7 +125,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         tableView.contentInset = UIEdgeInsetsZero
         //Auto table row height
         tableView.estimatedRowHeight = 92.0
-        //tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
