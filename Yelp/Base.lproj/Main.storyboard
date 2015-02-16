@@ -179,7 +179,7 @@
                         <viewControllerLayoutGuide type="top" id="Qef-Xt-OZg"/>
                         <viewControllerLayoutGuide type="bottom" id="VYZ-87-2SR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="top" id="mP9-P3-fyd" customClass="UIScrollView">
+                    <view key="view" contentMode="top" id="mP9-P3-fyd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

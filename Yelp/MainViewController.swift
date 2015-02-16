@@ -60,7 +60,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func searchTerm(term: String, location: String) {
-        var category = categoryName == "All" ? "" : categoryName
+        var category = categoryCode
         client.searchWithTerm(term, sort: sortBy, category_filter: category, deals_filter: self.dealFilterOn, radius_filter: radiusFilterToMeters(radiusFilter), location: location, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             if let responseWrapped = response as? NSDictionary {
                 self.businesses = responseWrapped["businesses"] as NSArray
@@ -125,7 +125,7 @@ class MainViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         tableView.contentInset = UIEdgeInsetsZero
         //Auto table row height
         tableView.estimatedRowHeight = 92.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        //tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {

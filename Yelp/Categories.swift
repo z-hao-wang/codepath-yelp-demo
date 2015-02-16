@@ -193,4 +193,19 @@ struct Categories {
         }
         return ret
     }
+    func codeFromName(name: String) -> String {
+        var ret = ""
+        if name == "All" { //skip All
+            return ret
+        }
+        for item in categories {
+            if let nameTmp = item["name"]{
+                if nameTmp == name {
+                    return item["code"]!
+                }
+            }
+        }
+        return ret
+
+    }
 }

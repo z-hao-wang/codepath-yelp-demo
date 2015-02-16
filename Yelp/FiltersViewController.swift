@@ -13,6 +13,7 @@ var filterOptions = Dictionary<String, Bool>()
 var sortBy = 0 // 0 = Best Match, 1 = Distance, 2 = Highest Rated
 var radiusFilter = 0 // 0 = auto, 1 = 0.3 miles, 2 = 1 mile, 3 = 5 miles, 4 = 20 miles
 var categoryName = "All"
+var categoryCode = ""
 
 class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate, filterDelegate {
     //Bool table view
@@ -76,6 +77,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         categoriesPickerHidden = true
         categoriesPicker.hidden = categoriesPickerHidden
         categoryName = getCategoryNameFromRow(row)
+        categoryCode = categories.codeFromName(categoryName)
         setCategoryButtonTitle()
     }
     
